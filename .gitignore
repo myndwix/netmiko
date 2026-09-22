@@ -1,0 +1,7 @@
+venv/
+__pycache__/
+*.pyc
+
+# Contains plaintext device credentials
+cisco_tacacs_config.yaml
+hwtacacs_config.yaml

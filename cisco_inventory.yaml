@@ -1,0 +1,21 @@
+# List every Cisco switch you want show_config.py / configure_aaa.py to hit.
+# username/password/secret are optional per-host overrides — if omitted,
+# the values entered when you run the script are used for all hosts.
+# "secret" is the enable password (only needed if the device drops you
+# into user EXEC mode and requires "enable" before "show running-config").
+#
+# "remove" is used only by configure_aaa.py: it lists this host's existing
+# radius/aaa config that conflicts with aaa_config.yaml's new config and
+# needs to be torn out first. Both fields are optional and per-host, since
+# switches may have different old settings (or none at all).
+devices:
+  - host: 10.20.1.250
+    device_type: cisco_ios
+    # username: admin
+    # password: only-if-this-host-differs-from-the-rest
+    # secret: enable-password-if-different-from-login-password
+    # remove:
+    #   radius_servers: [10.9.9.9, 10.9.9.10]   # old "radius-server host" IPs
+    #   group: OLD-RADIUS-GRP                    # old "aaa group server radius" name
+  # - host: 10.211.55.21
+  #   device_type: cisco_ios
