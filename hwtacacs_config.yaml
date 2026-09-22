@@ -1,0 +1,22 @@
+# Credentials and display commands for show_hwtacacs.py.
+# This file replaces the old interactive username/password prompt and the
+# --command CLI flag — edit the values below and re-run the script.
+#
+# NOTE: password is stored in plaintext here. Keep this file out of git
+# (see .gitignore) and restrict its permissions, e.g. chmod 600 hwtacacs_config.yaml.
+
+username: netadmin
+password: password
+
+# show_commands run one-by-one via send_command (exec/user view only).
+show_commands:
+  - display version
+
+# config_commands run as a single send_config_set batch. Netmiko enters
+# system-view automatically, so don't list it here - just the lines you'd
+# type after that, including submode entries like "aaa".
+config_commands:
+  - aaa
+  - local-user myndwix1 password irreversible-cipher Welcome123#
+  - local-user myndwix1 privilege level 3
+  - local-user myndwix1 service-type ssh terminal

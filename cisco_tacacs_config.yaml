@@ -1,0 +1,27 @@
+# Credentials and display commands for show_cisco_tacacs.py.
+# This file replaces the old interactive username/password prompt and the
+# --command CLI flag — edit the values below and re-run the script.
+#
+# NOTE: password is stored in plaintext here. Keep this file out of git
+# (see .gitignore) and restrict its permissions, e.g. chmod 600 cisco_tacacs_config.yaml.
+
+username: netadmin
+password: password
+
+# Enable secret, needed if the device drops you into user EXEC mode and
+# requires "enable" before privileged show/config commands. Leave blank
+# (or delete the line) if your login already lands in privileged mode.
+secret: secret
+
+# show_commands run one-by-one via send_command (exec/privileged view only).
+show_commands:
+  - terminal length 0
+  - show version
+  - show interfaces status
+
+# config_commands run as a single send_config_set batch. Netmiko enters
+# global config mode automatically, so don't list "configure terminal" -
+# just the lines you'd type after that.
+config_commands:
+  # - username test2 privilege 15 secret Welcome123#
+  - do show running-config
